@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.zjh.seckill.util.SpringWebContextUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -13,8 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.thymeleaf.spring4.context.SpringWebContext;
-import org.thymeleaf.spring4.view.ThymeleafViewResolver;
+import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
 import com.zjh.seckill.domain.SeckillUser;
 import com.zjh.seckill.redis.GoodsKey;
@@ -62,7 +62,7 @@ public class GoodsController {
         List<GoodsVo> goodsList = goodsService.listGoodsVo();
         model.addAttribute("goodsList", goodsList);
         model.addAttribute("user", user);
-        SpringWebContext ctx = new SpringWebContext(request, response, request.getServletContext(), request.getLocale(),
+        SpringWebContextUtil ctx = new SpringWebContextUtil(request, response, request.getServletContext(), request.getLocale(),
                 model.asMap(), applicationContext);
         // 手动渲染
         html = thymeleafViewResolver.getTemplateEngine().process("goods_list", ctx);
@@ -107,7 +107,7 @@ public class GoodsController {
         model.addAttribute("remainSeconds", remainSeconds);
         // return "goods_detail";
 
-        SpringWebContext ctx = new SpringWebContext(request, response, request.getServletContext(), request.getLocale(),
+        SpringWebContextUtil ctx = new SpringWebContextUtil(request, response, request.getServletContext(), request.getLocale(),
                 model.asMap(), applicationContext);
         html = thymeleafViewResolver.getTemplateEngine().process("goods_detail", ctx);
         if (!StringUtils.isEmpty(html)) {

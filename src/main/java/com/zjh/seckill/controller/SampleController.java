@@ -3,6 +3,7 @@ package com.zjh.seckill.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -59,10 +60,10 @@ public class SampleController {
         return Result.success(true);
     }
 
-    @RequestMapping("/redis/get")
+    @RequestMapping("/redis/get/{id}")
     @ResponseBody
-    public Result<User> redisGet() {
-        User user = redisService.get(UserKey.getById, "" + 1, User.class);
+    public Result<User> redisGet(@PathVariable(value="id") Long id) {
+        User user = redisService.get(UserKey.getById, "" + id, User.class);
         return Result.success(user);
     }
 

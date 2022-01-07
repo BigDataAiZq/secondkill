@@ -161,7 +161,7 @@ public class RedisService {
 					keys.addAll(result);
 				}
 				//再处理cursor
-				cursor = ret.getStringCursor();
+				cursor = ret.getCursor();
 			}while(!cursor.equals("0"));
 			return keys;
 		} finally {

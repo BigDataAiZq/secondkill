@@ -10,12 +10,20 @@
 | druid      | 1.0.20   |      |
 | guava      | 20       |      |
 
-## 演示：
-
-入口：
+## 特色功能系统说明：
+1、控制到时才能开始秒杀
+2、防止重复提交
+3、防止超卖
+4、秒杀商品全缓存
+5、秒杀路径随机生成 防止用户通过url直接访问
+6、秒杀时，生成验证码
+7、基于令牌桶算法的限流实现类
+8、预减库存（缓存中扣减）
+9、秒杀进入消息队列，异步处理一下业务逻辑：生成订单 生成秒杀订单 扣减数据库中商品库存
+10、数据库乐观锁，防止库存扣减重复
+11、敏感数据加密：前端提交的密码加密
+12、控制重复秒杀
+13、统一错误信息返回
+## 特色登录入口：
+/login/toLogin
 登录账号：13168796399 admin123
-![image-20220107200836961](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220107200836961.png)
-
-![image-20220107200854997](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220107200854997.png)
-
-![image-20220107200921135](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220107200921135.png)
